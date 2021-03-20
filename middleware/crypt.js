@@ -23,6 +23,16 @@ function getSalt(salt) {
 }
 
 /**
+ * hashes a password using sha512 algorithm
+ * @param {String} password 
+ * @returns String containing hashed password
+ */
+function hash(password) {
+    var hash = crypto.createHash('sha512').update(password).digest('base64').toString('utf8');
+    return hash;
+}
+
+/**
  * Given a string and salt buffer this method creates an iv
  * @param {String} password
  * @param {Buffer} salt
@@ -101,3 +111,4 @@ module.exports.getIV = getIV;
 module.exports.getKeyFromPassword = getKeyFromPassword;
 module.exports.getSalt = getSalt;
 module.exports.arrayToBuffer = arrayToBuffer;
+module.exports.hash = hash;
