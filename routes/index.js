@@ -1,11 +1,16 @@
 const { json } = require('express');
 var express = require('express');
-const db = require('../middleware/db')
+const db = require('../middleware/db');
 var router = express.Router();
+const crypt = require('../middleware/crypt');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Rubenson' });
+  if(req.session.user){
+    return res.render('index', { title: 'Rubenson' });
+  }
+
+  return res.render('login');
 });
 
 router.get('/add-mockdata', async function(req, res){
