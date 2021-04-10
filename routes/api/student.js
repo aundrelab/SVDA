@@ -8,7 +8,7 @@ router.post('/add', async function(req, res, next){
         return res.json({success:false, message: 'error: invalid data received'});
     }   
 
-    // inserts father into db
+    // inserts father into dbsd
     let father_id = null;
     let father_query = 'INSERT INTO Father VALUES(NULL,?,?,?,?)';
     if(req.body['father']){
